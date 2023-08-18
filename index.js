@@ -70,7 +70,14 @@ const myVideo = document.getElementById("myVideo");
 
 function playvid(videoname){
     myVideo.src = "/resources/"+videoname+".mp4";
-    myVideo.play();
+    myVideo.onloadedmetadata = function(){
+        this.muted = true;
+        this.playsinline= true;
+        this.autoplay=true
+        this.muted=true
+        this.loop=true;
+        myVideo.play();
+    }
     containers.classList.remove("no");
     containers.classList.add("yes");
 }
